@@ -1,0 +1,8 @@
+Run eas build --platform android --profile preview --non-interactive
+Resolved "preview" environment for the build. Learn more: https://docs.expo.dev/eas/environment-variables/#setting-the-environment-for-your-builds
+No environment variables with visibility "Plain text" and "Sensitive" found for the "preview" environment on EAS.
+
+✔ Using remote Android credentials (Expo server)
+Generating a new Keystore is not supported in --non-interactive mode
+    Error: build command failed.
+Error: Process completed with exit code 1.

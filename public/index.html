@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VS Code-like Editor with Terminal</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="topbar">
+    <button id="runBtn">▶ Run</button>
+  </div>
+
+  <div id="main-container">
+    <div id="activitybar">
+      <button id="filesBtn"><i class="fas fa-file"></i></button>
+      <button id="terminalBtn"><i class="fas fa-terminal"></i></button>
+      <button id="aiBtn">	<i class="fas fa-robot"></i></button>
+    </div>
+
+    <div id="sidebar">
+      <h3>EXPLORER</h3>
+      <ul id="fileTree"></ul>
+      <div id="sidebar-controls">
+        <button id="newFileBtn">+ New File</button>
+        <button id="newFolderBtn">+ New Folder</button>
+      </div>
+    </div>
+
+    <div id="editor-container">
+      <div id="tabs"></div>
+      <div id="editor-main">
+        <div id="placeholder">📄 Make a file to start coding...</div>
+        <div id="editor"></div>
+      </div>
+      <div id="terminal">
+        <div id="terminal-output" tabindex="0"></div>
+      </div>
+    </div>
+
+    <div id="right-panel" style="width:400px; background:#1e1e1e; border-left:1px solid #333; display:none; flex-direction:column;">
+      <div id="right-tabs" style="display:flex; border-bottom:1px solid #333; background:#252526;">
+        <div id="tab-ai" class="tab-btn" style="flex:1; text-align:center; padding:8px; cursor:pointer; color:#ccc;">AI</div>
+        <div id="tab-run" class="tab-btn" style="flex:1; text-align:center; padding:8px; cursor:pointer; color:#ccc;">Run</div>
+      </div>
+      <div id="ai-panel" style="flex:1; display:none; flex-direction:column;">
+        <div id="ai-chat"></div>
+        <div id="ai-input-container"><input id="ai-input" placeholder="Ask AI..." /></div>
+      </div>
+      <div id="run-panel" style="flex:1; display:none; flex-direction:column;">
+        <div id="run-header">Run Preview</div>
+        <div id="run-output">🚀 Your app preview will appear here...</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="contextMenu"></div>
+
+  <!-- Your JS stays unchanged -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
