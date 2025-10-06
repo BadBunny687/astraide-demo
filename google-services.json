@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "615693363733",
+    "project_id": "rapidflow-6cef7",
+    "storage_bucket": "rapidflow-6cef7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615693363733:android:51d44c05b380ce1d9c7c1c",
+        "android_client_info": {
+          "package_name": "com.bad_bunny.rapidflow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtVVxzhZ1H3ooUe_PECzE_YULF5iUo9QE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

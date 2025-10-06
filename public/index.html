@@ -12,13 +12,25 @@
 </head>
 <body>
   <div id="topbar">
-    <button id="runBtn">▶ Run</button>
+    <div class="demo-banner">
+  <div class="demo-title">
+    🚧 Demo Version 1
+  </div>
+  <div class="demo-subtitle">
+    Start with the file named <strong>App.tsx</strong>.  
+    Other filenames may not run properly — this is a prototype build. please always check your session id to locate your running wordkflow in the github
+    <span id="sessionDisplay" style="margin-left: auto; font-size: 12px; opacity: 0.7;">
+    Session: ...
+  </span>
+  </div>
+</div>
+    <button id="runBtn"> Run</button>
   </div>
 
   <div id="main-container">
     <div id="activitybar">
       <button id="filesBtn"><i class="fas fa-file"></i></button>
-      <button id="terminalBtn"><i class="fas fa-terminal"></i></button>
+      <!-- <button id="terminalBtn"><i class="fas fa-terminal"></i></button> -->
       <button id="aiBtn">	<i class="fas fa-robot"></i></button>
     </div>
 
@@ -54,6 +66,8 @@
       <div id="run-panel" style="flex:1; display:none; flex-direction:column;">
         <div id="run-header">Run Preview</div>
         <div id="run-output">🚀 Your app preview will appear here...</div>
+        <div class="link-git"><a href="https://github.com/BadBunny687/demo/actions" target="_blank">your running project is avalible here wait for your build to end</a></div>
+        <div class="warning">please remember the builds are on free tier of the expo so it might get queued for long in peek times</div>
       </div>
     </div>
   </div>

@@ -10,6 +10,24 @@ body {
     display: flex;
     flex-direction: column;
 }
+.demo-banner {
+  background: linear-gradient(90deg, #007acc 0%, #1e1e1e 100%);
+  color: #fff;
+  padding: 10px 15px;
+  font-family: 'Segoe UI', sans-serif;
+  width: 100%;
+  border-bottom: 1px solid #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.demo-title {
+  font-weight: bold;
+  font-size: 15px;
+}
+.demo-subtitle {
+  font-size: 13px;
+  color: #dcdcdc;
+  margin-top: 2px;
+}
 #topbar {
     flex: 0 0 auto;
     height: 40px;
@@ -440,5 +458,13 @@ body {
 @keyframes blink {
   50% { background: transparent; }
 }
-
-
+.link-git{
+    text-decoration: none;
+    color: #4FC3F7;
+}
+.link-git a{
+    color: #4FC3F7;
+}
+.warning{
+    color: yellow;
+}

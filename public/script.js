@@ -73,6 +73,16 @@ function jsLinter(view) {
 
 const contextMenu = document.getElementById("contextMenu");
 
+// -----------------------
+// --- Unique Session ID ---
+// -----------------------
+if (!localStorage.getItem("sessionId")) {
+  localStorage.setItem("sessionId", "user-" + Math.random().toString(36).slice(2, 9));
+}
+const sessionId = localStorage.getItem("sessionId");
+
+document.getElementById("sessionDisplay").textContent = "Session: " + sessionId;
+
 // -----------------------------
 // --- File Type Icon Mapping ---
 // -----------------------------
@@ -593,12 +603,12 @@ socket.on("output", (data) => {
   });
 });
 
-terminalBtn.addEventListener("click", () => {
-  const visible = terminal.style.display === "flex";
-  terminal.style.display = visible ? "none" : "flex";
-  terminalBtn.classList.toggle("active", !visible);
-  if (!visible && activeInput) activeInput.focus();
-});
+// terminalBtn.addEventListener("click", () => {
+//   const visible = terminal.style.display === "flex";
+//   terminal.style.display = visible ? "none" : "flex";
+//   terminalBtn.classList.toggle("active", !visible);
+//   if (!visible && activeInput) activeInput.focus();
+// });
 
 printToTerminal("Connected to real terminal. Type commands...");
 
@@ -657,27 +667,29 @@ runBtn.addEventListener("click", async () => {
     fileSystem["package.json"] = {
       type: "file",
       content: JSON.stringify(
-        {
-          "name": "rapidflow",
-          "version": "1.0.0",
-          "main": "index.js",
-          "scripts": {
-            "start": "expo start",
-            "android": "expo start --android",
-            "ios": "expo start --ios",
-            "web": "expo start --web"
-          },
-          "dependencies": {
-            "expo": "~51.0.21",
-            "expo-status-bar": "~1.12.1",
-            "react": "18.2.0",
-            "react-native": "0.74.3"
-          },
-          "devDependencies": {
-            "@babel/core": "^7.20.0"
-          },
-          "private": true
-        },
+{
+  "name": "astraide",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "server": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "expo": "^54.0.12",
+    "express": "^5.1.0",
+    "react": "19.1.0",
+    "react-native": "0.81.4",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0",
+    "simple-git": "^3.24.0",
+    "socket.io": "^4.8.1",
+    "axios": "^1.6.8"
+  }
+},
         null,
         2
       ),
@@ -690,22 +702,25 @@ runBtn.addEventListener("click", async () => {
     fileSystem["app.json"] = {
       type: "file",
       content: JSON.stringify(
-        {
-          "expo": {
-            "name": "rapidflow",
-            "slug": "rapidflow",
-            "owner": "bad_bunny",
-            "version": "1.0.0",
-            "android": {
-              "package": "com.bad_bunny.rapidflow"
-            },
-            "extra": {
-              "eas": {
-                "projectId": "7a247fac-49ca-4be8-9994-769dbefdfdeb"
-              }
-            }
-          }
-        },
+   {
+  "expo": {
+    "name": "rapidflow",
+    "slug": "rapidflow",
+    "owner": "bad_bunny",
+    "version": "1.0.0",
+    "sdkVersion": "54.0.0",       
+    "android": {
+      "package": "com.bad_bunny.rapidflow",
+      "googleServicesFile": "./google-services.json"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "extra": {
+      "eas": {
+        "projectId": "7a247fac-49ca-4be8-9994-769dbefdfdeb"
+      }
+    }
+  }
+},
         null,
         2
       ),
@@ -759,7 +774,7 @@ const styles = StyleSheet.create({
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ fileSystem }),
+      body: JSON.stringify({ fileSystem, sessionId }),
     });
 
     const result = await response.json();

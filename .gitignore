@@ -1,0 +1,14 @@
+# dependencies
+node_modules/
+
+# environment variables
+.env
+
+# build folders
+tmp/
+dist/
+build/
+
+# OS junk
+.DS_Store
+Thumbs.db
