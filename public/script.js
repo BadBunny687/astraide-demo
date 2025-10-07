@@ -8,7 +8,8 @@ import { oneDark } from "https://esm.sh/@codemirror/theme-one-dark";
 import { autocompletion, completeFromList } from "https://esm.sh/@codemirror/autocomplete";
 import { linter, lintGutter } from "https://esm.sh/@codemirror/lint";
 import { StreamLanguage } from "https://esm.sh/@codemirror/language";
-import { dart } from "https://esm.sh/@codemirror/legacy-modes/mode/clike"; 
+import { dart } from "https://esm.sh/@codemirror/legacy-modes/mode/clike";
+import { io } from "https://cdn.socket.io/4.7.2/socket.io.esm.min.js";
 
 
 const reactCompletions = completeFromList([
