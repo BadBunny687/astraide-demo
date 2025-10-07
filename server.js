@@ -17,10 +17,16 @@ app.use(express.json());
 io.on("connection", (socket) => { 
    console.log("Client connected"); 
 
-   const shell = 
-   process.platform === "win32" 
-   ? spawn("powershell.exe", ["-NoLogo"], { shell: true }) 
-   : spawn("bash", ["--noprofile", "--norc", "-i"]); 
+let shell;
+try {
+  shell =
+    process.platform === "win32"
+      ? spawn("powershell.exe", ["-NoLogo"], { shell: true })
+      : spawn("bash", ["-i"], { shell: true });
+} catch (err) {
+  console.error("Shell spawn error:", err);
+}
+
   
 shell.stdout.on("data", (data) => { 
    socket.emit("output", { output: data.toString() });
@@ -110,8 +116,9 @@ app.post("/run-react-native", async (req, res) => {
   }
 });
 
-
-const PORT = process.env.PORT || 3000; 
-server.listen(PORT, () => { 
-  console.log(`Server running at http://localhost:${PORT}`); 
+app.get("/", (req, res) => {
+  res.send("Hello from Railway!");
 });
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Running on port ${port}`));
